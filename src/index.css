@@ -1,0 +1,94 @@
+:root {
+  /* Premium Dark Theme Palette */
+  --bg-primary: #0f1115;
+  /* Deep Charcoal */
+  --bg-secondary: #181b21;
+  /* Slightly lighter charcoal for cards */
+  --bg-tertiary: #232730;
+  /* Borders / inputs */
+
+  --text-primary: #ffffff;
+  --text-secondary: #e4e4e7;
+  /* Zinc-200, much brighter */
+  --text-muted: #a1a1aa;
+  /* Zinc-400, brighter than before */
+
+  --accent-primary: #818cf8;
+  /* Lightened Indigo for better contrast */
+  --accent-glow: rgba(129, 140, 248, 0.5);
+
+  --success: #34d399;
+  /* Emerald-400, brighter */
+  --success-glow: rgba(52, 211, 153, 0.4);
+
+  --danger: #f87171;
+  /* Red-400, brighter */
+  --danger-glow: rgba(248, 113, 113, 0.4);
+
+  --warning: #fbbf24;
+  /* Amber-400 */
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+
+  color-scheme: dark;
+  /* Tells browser to use dark defaults for inputs/scrollbars */
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+#root {
+  width: 100%;
+  max-width: 600px;
+  /* Minimalist mobile-first constraint */
+  padding: 2rem 1rem;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  color: inherit;
+  /* Critical: Ensure buttons use the global text color */
+  transition: all 0.2s ease;
+}
+
+/* Utilities */
+.glass-panel {
+  background: rgba(24, 27, 33, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-md);
+}
+
+.glow-text {
+  text-shadow: 0 0 20px var(--accent-glow);
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-modal-in {
+  animation: modal-in 0.2s ease-out forwards;
+}
