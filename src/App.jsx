@@ -5,14 +5,26 @@ import Navigation from './components/Navigation';
 import ResourceTracker from './components/ResourceTracker';
 import CalendarView from './components/CalendarView';
 import Auth from './components/Auth';
+import { config } from './config';
 import './App.css';
 
 function MainApp() {
-  const { session, loading } = useHabits();
+  const { session, loading, signOut } = useHabits();
   const [activeTab, setActiveTab] = useState('dashboard');
 
   if (loading) return <div style={{ display: 'flex', height: '100vh', alignItems: 'center', justifyContent: 'center' }}>Loading...</div>;
   if (!session) return <Auth />;
+
+  // Access Control
+  if (config.allowedEmail && session.user.email !== config.allowedEmail) {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', alignItems: 'center', justifyContent: 'center', gap: '1rem' }}>
+        <h2>Access Denied</h2>
+        <p>You are not authorized to view this application.</p>
+        <button onClick={signOut} style={{ padding: '0.5rem 1rem' }}>Sign Out</button>
+      </div>
+    );
+  }
 
   return (
     <div className="app-container">
