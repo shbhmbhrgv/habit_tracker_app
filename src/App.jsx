@@ -16,6 +16,9 @@ function MainApp() {
   if (!session) return <Auth />;
 
   // Access Control
+  console.log('Current User Email:', session?.user?.email);
+  console.log('Allowed Email Config:', config.allowedEmail);
+
   if (config.allowedEmail && session.user.email !== config.allowedEmail) {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', alignItems: 'center', justifyContent: 'center', gap: '1rem' }}>
